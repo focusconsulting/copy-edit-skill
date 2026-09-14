@@ -1,0 +1,11 @@
+# Copy to .claude/copy-edit.toml at the repo root and edit.
+#
+# skip: paths the sweep leaves alone unless an argument names one of them
+# or a path inside it. A trailing "/" marks a directory; a bare path is one
+# file. Diff mode ignores this list: a staged change is always in scope.
+# Typical entries are files another person or discipline maintains by hand.
+skip = [
+  "engineering/infrastructure/",  # infrastructure code owned by its author
+  "design/",                      # specs written by the design team
+  "product/",                     # requirements owned by product
+]
