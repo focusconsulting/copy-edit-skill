@@ -1,8 +1,14 @@
 {
+  "$schema": "https://www.schemastore.org/claude-code-plugin-manifest.json",
   "name": "copy-editor",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Copy-edit the prose in a diff — comments, docstrings, markdown — against an editorial standard. A read-only reviewer agent, a judgment step, and a script that applies findings by exact match.",
   "author": {
-    "name": "Paul Parker"
-  }
+    "name": "Paul Parker",
+    "url": "https://focusconsulting.io"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/focusconsulting/copy-edit-skill",
+  "homepage": "https://github.com/focusconsulting/copy-edit-skill",
+  "keywords": ["copy-edit", "comments", "docstrings", "prose", "code-review"]
 }

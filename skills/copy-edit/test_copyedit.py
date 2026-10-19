@@ -117,6 +117,12 @@ def test_delete_removes_the_whole_line(repo: Path) -> None:
     assert "def f(x: int) -> int:\n    return x + 1  # add one\n" in (repo / "app/mod.py").read_text()
 
 
+def test_delete_at_file_start_drops_the_blank_lines_below_it(repo: Path) -> None:
+    commit(repo, {"app/mod.py": MOD})
+    apply(repo, finding(1, "app/mod.py", DOCSTRING, lines="1-4"))
+    assert (repo / "app/mod.py").read_text().startswith("# ---- helpers ----\n\n\ndef f")
+
+
 def test_partial_line_edit_keeps_the_rest_and_uses_the_line_hint(repo: Path) -> None:
     commit(repo, {"app/mod.py": MOD})
     text = "    return x + 1  # add one"

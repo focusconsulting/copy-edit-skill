@@ -1,19 +1,20 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
-  "name": "copy-editor",
+  "name": "copy-edit-skill",
   "owner": {
-    "name": "Paul Parker"
+    "name": "Focus Consulting",
+    "url": "https://focusconsulting.io"
   },
   "metadata": {
-    "description": "The copy-editor plugin, served from its own repository.",
-    "version": "0.1.0"
+    "description": "Serves the copy-editor plugin from its own repository.",
+    "version": "0.2.0"
   },
   "plugins": [
     {
       "name": "copy-editor",
       "source": "./",
       "description": "Copy-edit the prose in a diff — comments, docstrings, markdown — against an editorial standard.",
-      "version": "0.1.0"
+      "version": "0.2.0"
     }
   ]
 }

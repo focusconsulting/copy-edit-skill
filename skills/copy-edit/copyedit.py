@@ -152,6 +152,8 @@ def apply_one(f: Finding) -> str:
     if f.replacement == "" and whole:
         end = min(end + 1, len(text))
         text = text[:start] + text[end:]
+        if start == 0:  # a deleted module docstring would leave its blank lines on top
+            text = text.lstrip("\n")
     else:
         text = text[:start] + f.replacement + text[end:]
     path.write_text(text)
