@@ -70,9 +70,9 @@ ${CLAUDE_PLUGIN_ROOT}/skills/copy-edit/standard.md first."
   Add the partition's file list, plus "review all prose in these
   files".
 
-Write the reports, concatenated, to `.claude/copy-edit-findings.txt`
-in the repository. If every report ends `SUMMARY: clean.`, report that
-and stop.
+Write the reports, concatenated, to `.copy-edit/findings.txt` in the
+repository. If every report ends `SUMMARY: clean.`, report that and
+stop.
 
 ## 3. Judge
 
@@ -88,7 +88,7 @@ Run `python3 "${CLAUDE_PLUGIN_ROOT}/skills/copy-edit/copyedit.py"
 apply --mode diff` (or `--mode sweep`), with `--skip 2,5` for the
 indexes you are keeping. It applies each remaining finding by exact
 match, reports applied, missed, and skipped, and appends one line to
-`.claude/copy-edit.log` in the repository. For a missed finding,
+`.copy-edit/runs.log` in the repository. For a missed finding,
 re-read the file and apply the intent by hand with Edit. Read `git
 diff` once. Do not re-run the agent on its own output.
 

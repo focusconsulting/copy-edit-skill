@@ -7,14 +7,14 @@
   },
   "metadata": {
     "description": "Serves the copy-editor plugin from its own repository.",
-    "version": "0.2.0"
+    "version": "0.3.0"
   },
   "plugins": [
     {
       "name": "copy-editor",
       "source": "./",
       "description": "Copy-edit the prose in a diff — comments, docstrings, markdown — against an editorial standard.",
-      "version": "0.2.0"
+      "version": "0.3.0"
     }
   ]
 }

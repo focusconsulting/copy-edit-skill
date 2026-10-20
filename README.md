@@ -50,7 +50,7 @@ staged. A read-only agent reads the standard and the diff and returns
 findings with exact replacement text; the session skips any finding
 that would delete a why, a constraint, an invariant, a gotcha, or a
 regression record; a script applies the rest by exact match and
-appends one line to `.claude/copy-edit.log`.
+appends one line to `.copy-edit/runs.log`.
 
 To sweep whole files instead, name paths:
 
@@ -72,9 +72,11 @@ files another person maintains by hand:
 skip = ["infrastructure/", "design/"]
 ```
 
-Diff mode ignores the list: a staged change is always in scope. Add
-`.claude/copy-edit-findings.txt` and `.claude/copy-edit.log` to the
-repository's `.gitignore`.
+Diff mode ignores the list: a staged change is always in scope.
+
+Scratch files, the findings and the run log, live in `.copy-edit/` at
+the repository root. The script writes a `.gitignore` there, so there
+is nothing to add to yours.
 
 ## Tests
 

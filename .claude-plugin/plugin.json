@@ -1,7 +1,7 @@
 {
   "$schema": "https://www.schemastore.org/claude-code-plugin-manifest.json",
   "name": "copy-editor",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Copy-edit the prose in a diff — comments, docstrings, markdown — against an editorial standard. A read-only reviewer agent, a judgment step, and a script that applies findings by exact match.",
   "author": {
     "name": "Paul Parker",

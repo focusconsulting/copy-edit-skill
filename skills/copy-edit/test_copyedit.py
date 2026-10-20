@@ -175,6 +175,18 @@ def test_several_findings_in_one_file_all_apply(repo: Path) -> None:
     assert result.startswith('"""Helpers."""\n') and "----" not in result
 
 
+def test_default_paths_live_in_a_self_ignoring_folder(repo: Path) -> None:
+    commit(repo, {"app/mod.py": MOD})
+    work = repo / ".copy-edit"
+    work.mkdir()
+    (work / "findings.txt").write_text(finding(1, "app/mod.py", '    """Return x plus one."""'))
+    assert "applied=1" in sh(repo, "apply").stdout
+    assert (work / ".gitignore").read_text().endswith("*\n")
+    assert (work / "runs.log").read_text().count("\n") == 1
+    status = subprocess.run(["git", "status", "--porcelain"], cwd=repo, capture_output=True, text=True).stdout
+    assert status.strip() == "M app/mod.py"
+
+
 def test_apply_logs_one_line_per_run_unless_told_not_to(repo: Path) -> None:
     commit(repo, {"app/mod.py": MOD})
     text = finding(1, "app/mod.py", '    """Return x plus one."""')

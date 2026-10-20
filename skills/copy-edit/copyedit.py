@@ -27,9 +27,19 @@ def git(*args: str) -> str:
 
 
 ROOT = Path(git("rev-parse", "--show-toplevel"))
-DEFAULT_FINDINGS = ".claude/copy-edit-findings.txt"
-DEFAULT_LOG = ".claude/copy-edit.log"
+WORKDIR = ".copy-edit"
+DEFAULT_FINDINGS = f"{WORKDIR}/findings.txt"
+DEFAULT_LOG = f"{WORKDIR}/runs.log"
 DEFAULT_CONFIG = ".claude/copy-edit.toml"
+
+
+def ensure_workdir() -> None:
+    """The scratch folder ignores itself, so consumers add nothing to .gitignore."""
+    path = ROOT / WORKDIR
+    path.mkdir(exist_ok=True)
+    ignore = path / ".gitignore"
+    if not ignore.exists():
+        ignore.write_text("# Created by the copy-edit skill.\n*\n")
 
 
 @dataclass
@@ -337,6 +347,7 @@ def main(argv: list[str] | None = None) -> int:
     p_apply.set_defaults(fn=cmd_apply)
 
     args = parser.parse_args(argv)
+    ensure_workdir()
     return args.fn(args)
 
 
